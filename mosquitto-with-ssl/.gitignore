@@ -1,0 +1,4 @@
+certs/*.pem
+certs/*.key
+log/*.log
+data/*.db

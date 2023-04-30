@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto
+    restart: always
+    ports:
+      - '1883:1883'
+      - '8883:8883'
+      - '9001:9001'
+      - '9002:9002'
+    volumes:
+      - ./config/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ./log:/mosquitto/log
+      - ./data:/mosquitto/data
+      - ./certs:/mosquitto/certs
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+    networks:
+      - mosquitto
+
+networks:
+  mosquitto:
+    driver: bridge
